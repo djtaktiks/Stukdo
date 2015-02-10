@@ -24,7 +24,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = current_user.tasks.new(task_params)
+    @task = current_user.task.new(task_params)
     @task.save
     respond_with(@task)
   end
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
   def change
     @task.update_attributes(state: params[:state])
     respond_to do |format|
-      format.html{redirect_to tasks_path, notice: "Task Updated"}
+      format.html {redirect_to tasks_path, notice: "Task Updated"}
   end
 
   private
